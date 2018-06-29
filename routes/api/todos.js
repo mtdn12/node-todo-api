@@ -136,6 +136,7 @@ router.post('/completed/:todo_id', passport.authenticate('jwt',{session:false}),
     const todo = await Todo.findById(req.params.todo_id)
     if(!todo) throw new Error
     todo.completed = true
+    todo.completedAt = Date.now()
     const newTodo = await todo.save()
     return res.json({
       result: 'success',
@@ -160,6 +161,7 @@ router.post('/uncompleted/:todo_id', passport.authenticate('jwt',{session:false}
     const todo = await Todo.findById(req.params.todo_id)
     if(!todo) throw new Error
     todo.completed = false
+    delete todo['completedAt']
     const newTodo = await todo.save()
     return res.json({
       result: 'success',

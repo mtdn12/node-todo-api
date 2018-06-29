@@ -17,6 +17,10 @@ const TodoSchema = new Schema({
   },
   completedAt: {
     type: Date
+  },
+  createdAt: {
+    type: Date,
+    default : Date.now
   }
 })
 

@@ -6,6 +6,7 @@ const keys = require('./config/keys')
 
 //Routes list
 const users = require('./routes/api/users')
+const todos = require('./routes/api/todos')
 
 
 const app = express()
@@ -30,6 +31,7 @@ require('./config/passport')(passport)
 
 // Use Routes
 app.use("/api/users", users)
+app.use("/api/todos", todos)
 
 
 let PORT = process.env.PORT || 5000
